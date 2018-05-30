@@ -74,14 +74,21 @@ for($i = 0; $i < sizeof($utility_array); $i++)
 //Add the values to get the sum of values.
 $total_sentiment_score = $overall_positive_score + $overall_negative_score + $overall_neutral_score;
 
-$utility_array['overall_positive_score'] = ($overall_positive_score/$total_sentiment_score)*100;
-$utility_array['overall_negative_score'] = ($overall_negative_score/$total_sentiment_score)*100;
-$utility_array['overall_neutral_score']  = ($overall_neutral_score/$total_sentiment_score)*100;
+$total_overall_positive_score = ($overall_positive_score/$total_sentiment_score)*100;
+$total_overall_negative_score = ($overall_negative_score/$total_sentiment_score)*100;
+$total_overall_neutral_score  = ($overall_neutral_score/$total_sentiment_score)*100;
 
-$sentiment_data .= "{
-	positive: ".$utility_array['overall_positive_score'].",
-	neutral: ".$utility_array['overall_neutral_score'].",
-	negative: ".$utility_array['overall_negative_score']."}, ";
+//Create another array to hold the total scores 
+$overall_scores  = array();
+$score_labels    = array();
+$score_labels [] = 'Positive';
+$score_labels [] = 'Negative';
+$score_labels [] = 'Neutral';
+$overall_scores [] = $total_overall_positive_score;
+$overall_scores [] = $total_overall_negative_score;
+$overall_scores [] = $total_overall_neutral_score;
+
+//print_r($score_labels);
 
 //echo $utility_array['overall_positive_score']."% <br>";
 //echo $utility_array['overall_negative_score']."% <br>";
@@ -820,32 +827,15 @@ $sentiment_data .= "{
 
                   <i class="fa fa-map-marker"></i>
                   <h3 class="box-title">
-                    Visitors
+                    Overall user sentiments
                   </h3>
                 </div>
                 <div class="box-body">
-                  <div id="piechart">
+                  <div id="piechart" style="height:300px;">
                   </div>
-                </div><!-- /.box-body-->
-                <div class="box-footer no-border">
-                  <div class="row">
-                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                      <div id="sparkline-1"></div>
-                      <div class="knob-label">Visitors</div>
-                    </div><!-- ./col -->
-                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                      <div id="sparkline-2"></div>
-                      <div class="knob-label">Online</div>
-                    </div><!-- ./col -->
-                    <div class="col-xs-4 text-center">
-                      <div id="sparkline-3"></div>
-                      <div class="knob-label">Exists</div>
-                    </div><!-- ./col -->
-                  </div><!-- /.row -->
                 </div>
               </div>
               <!-- /.box -->
-
               <!-- solid sales graph -->
               <div class="box box-solid bg-teal-gradient">
                 <div class="box-header">

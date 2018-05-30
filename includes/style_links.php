@@ -41,11 +41,12 @@
 			var data = google.visualization.arrayToDataTable([
 				['Positive','Neutral','Negative'],
 				<?php 
-					for($b=0; $b<3; $b++)
+					for($b = 0; $b < 3; $b++)
 					{
-						echo "['".$utility_array['overall_positive_score']."',
-							 ".$utility_array['overall_neutral_score'].",
-							 ".$utility_array['overall_negative_score']."],";
+						//This will display scores as Positive, Neutral and Negative
+						echo "['".$score_labels[$b]."',
+							 ".$overall_scores[$b].",
+							 ".$overall_scores[$b]."],";
 					}
 				?>
 			]);
