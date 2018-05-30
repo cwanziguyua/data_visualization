@@ -43,9 +43,9 @@
 				<?php 
 					for($b=0; $b<3; $b++)
 					{
-						echo "['".$utility_array[$b]['overall_positive_score']."',
-							 ".$utility_array[$b]['overall_neutral_score'].",
-							 ".$utility_array[$b]['overall_negative_score']."],";
+						echo "['".$utility_array['overall_positive_score']."',
+							 ".$utility_array['overall_neutral_score'].",
+							 ".$utility_array['overall_negative_score']."],";
 					}
 				?>
 			]);
